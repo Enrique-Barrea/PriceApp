@@ -12,8 +12,8 @@
 	<artifactId>priceapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>priceapp</name>
-	<description>Demo project for Spring Boot</description>
+	<name>PriceApp</name>
+	<description>PFG Aplicación Estimación Precios</description>
 	<url/>
 	<licenses>
 		<license/>

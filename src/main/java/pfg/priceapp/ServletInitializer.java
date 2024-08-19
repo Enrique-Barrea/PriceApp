@@ -1,4 +1,4 @@
-package pfg.priceapp.priceapp;
+package pfg.priceapp;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
