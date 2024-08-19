@@ -8,20 +8,20 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
+    @SuppressWarnings("deprecation")
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-            .logout()
-                .permitAll()
-                .and()
-            .httpBasic();
+                .authorizeRequests(requests -> requests
+                        .antMatchers("/priceapp/login.html").permitAll()  // Permitir acceso a login.html sin autenticación
+                        .anyRequest().authenticated()
+                        .and()
+                        .formLogin()
+                        .loginPage("/priceapp/login.html")
+                        .permitAll()
+                        .and()
+                        .logout()
+                        .permitAll());
         return http.build();
     }
 }
