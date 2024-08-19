@@ -1,6 +1,10 @@
 package pfg.priceapp.model;
 
-import javax.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id; // Add this import statement
+import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "Users")
