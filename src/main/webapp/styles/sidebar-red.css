@@ -1,0 +1,34 @@
+
+#sidebar {
+    background: #d57373 !important;
+}
+
+#sidebar .sidebar-header {
+    background: #cc6d6d !important;
+}
+
+#sidebar ul.components {
+    border-bottom: 1px solid #8b4747 !important;
+}
+
+#sidebar ul li a:hover {
+    color: #d57373 !important;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    background: #cc6d6d !important;
+}
+
+ul ul a {
+    background: #cc6d6d !important;
+}
+
+a.download {
+    color: #d57373 !important;
+}
+
+a.article,
+a.article:hover {
+    background: #cc6d6d !important;
+}

@@ -1,0 +1,77 @@
+<!-- Sidebar  -->
+<nav id="sidebar" style="height:100%" class="active">
+    <div class="sidebar-header">
+        <img src="imgs/logo_square.jpg" width="100%">
+    </div>
+    <ul class="list-unstyled components" id="menu">
+        <li>
+            <a href="javascript:openclose()">
+                <i class="fas fa-align-left"></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:logout()">
+                 <i class="fas fa-sign-out-alt"></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:infoApp()">
+                <i class="fas fa-info"></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:loadTask()">
+                <i class="fas fa-home"></i>
+            </a>
+        </li>
+        <!--
+        <li>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                <i class="fas fa-tasks"></i>&nbsp;Options </a>
+            <ul class="collapse show list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="reports.html">Reports</a>
+                </li>
+                <li>
+                    <a href="quality.html">Quality</a>
+                </li>
+            </ul>
+            </a>
+        </li>
+        -->
+    </ul>
+</nav>
+<script>
+    function openclose() {
+        $('#sidebar').toggleClass('active');
+        let estado = $('#sidebar').attr("class");
+        localStorage.setItem(APP_NAME+"estado_menu", estado);
+    }
+    function loadTask() {
+        rol = 'all';
+        window.location.href = 'reports.html#'+rol;
+
+        $('.nav-link').each(function() {
+            if ($(this).attr('href') === '#'+rol) {
+                this.className = "nav-link active";
+            } else {
+                this.className = "nav-link";
+            }
+        });
+        $('#tableitems').bootstrapTable('refresh');
+    }
+    $(document).ready(function () {
+
+        $("a").click(async function() {
+            unsavedRedirect($(this).attr('href'), 'redirect');
+
+        });
+
+        if (localStorage.getItem(APP_NAME+"estado_menu") != null) {
+            let estado = localStorage.getItem(APP_NAME+"estado_menu");
+            $('#sidebar').attr("class", estado);
+        }
+        else
+            $('#sidebar').addClass('active')
+    });
+</script>

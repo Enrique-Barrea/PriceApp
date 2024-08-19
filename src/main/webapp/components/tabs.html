@@ -1,0 +1,36 @@
+<ul class="nav nav-tabs" id="nav-interna">
+    <li class="nav-item">
+        <a class="nav-link" href="universe_header.html?edit=true">Header</a>
+    </li>
+
+</ul>
+<script>
+    $(document).ready(function () {
+        $("a").click(function () {
+            unsavedRedirect($(this).attr('href'), 'redirect');
+        });
+
+        UNIVERSE_HEADER = JSON.parse(localStorage.getItem(APP_NAME+"universe_header"));
+        /*                
+                PPC vs PRC → Si PPCS_Id >= 3 navPPCvsPRC
+                PPC prices → Si PPCS_Id >= 4 navPPCLinesPurchasePrice
+                PRC prices → Si PPCS_Id >= 9 navPPCSalesPrice
+                Status follow up → Visible siempre
+                PPC PM Activity → Si PPCS_Id >= 4 universe_ppc_pm_activity
+                PRC SR Activity → Si PPCS_Id >= 9 universe_ppc_sr_activity
+        */
+
+        let checkandsave = false;
+
+        $(".nav-link").map((index, itm) => {
+            if (itm.href.indexOf(window.location.pathname) > 0 && itm.href.indexOf("#") < 0) {
+                itm.href = "#";
+                itm.className = "nav-link active"
+                checkandsave = itm.attributes["checkandsave"] != undefined;
+            }
+        })
+        if (checkandsave)
+            $(".nav-link").map((index, itm) => { itm.href = "javascript:checkAndSave('" + itm.href + "')" });
+
+    });
+</script>
